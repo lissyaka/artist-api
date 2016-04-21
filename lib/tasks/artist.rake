@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'httparty'
 
-desc "Search artist by name"
+desc "Fetching data from Itunes"
 task :artist,  [:name] => :environment do |t, args|
   resp_artist = JSON.parse(HTTParty.get("https://itunes.apple.com/search?term=#{args[:name]}&entity=musicArtist"))
   puts "There is no such artist" if resp_artist["resultCount"] == 0
@@ -14,10 +14,12 @@ task :artist,  [:name] => :environment do |t, args|
     
     if artist.save
       puts "Successfully created #{artist.name}"
-      # TODO: Update albums if artist already present
-      fetch_albums(itunes_id, artist)
     else 
       puts "Unable to create artist, #{artist.name}: #{artist.errors.full_messages.join(", ")}"
+    end
+    
+    if Artist.where(:itunes_id => itunes_id)
+       fetch_albums(itunes_id, artist)
     end
   end
 end
