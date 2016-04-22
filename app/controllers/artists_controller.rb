@@ -6,9 +6,10 @@ class ArtistsController < ApplicationController
   end
 
   def show_albums
-    artist = Artist.where(:id => params[:id]).first
-    render :json => artist.albums 
-  end  
-
-
+    if artist = Artist.where(:id => params[:id]).first
+      render :json => artist.albums
+    else
+      not_found
+    end
+  end 
 end
