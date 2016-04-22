@@ -18,7 +18,7 @@ task :artist,  [:name] => :environment do |t, args|
       puts "Unable to create artist, #{artist.name}: #{artist.errors.full_messages.join(", ")}"
     end
     
-    if Artist.where(:itunes_id => itunes_id)
+    if Artist.where(:itunes_id => itunes_id).first
        fetch_albums(itunes_id, artist)
     end
   end
