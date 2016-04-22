@@ -1,28 +1,23 @@
-== README
+# Artist-api
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Artist-api is an API, that fetching info from Itunes with rake-task, that do next things
 
-Things you may want to cover:
+  - search artist by name
+  - fetch all albums for current artist
 
-* Ruby version
+##### Example
+You need to do next:
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+```sh
+$ rake artist[artistname]
+```
+### Installation
+```sh
+$ git clone https://github.com/lissyaka/artist-api.git
+$ cd artist-api
+$ bundle install
+$ rails s
+```
+### URL
+ - Fetch all artists -- GET: /artists
+ - Fetch all albums by artist -- GET: /artists/:artist_id/albums
