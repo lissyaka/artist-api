@@ -7,4 +7,12 @@ class Artist
   has_many :albums
   validates :name, presence: true
   validates :itunes_id, presence: true, uniqueness: true
+
+  def as_json(options={})
+  	{
+  		id: id.to_s,
+  		name: name,
+  		itunes_id: itunes_id
+  	}
+  end
 end
