@@ -12,7 +12,8 @@ class Artist
   	{
   		id: id.to_s,
   		name: name,
-  		itunes_id: itunes_id
+  		itunes_id: itunes_id,
+      albums: albums.map { |a| a.id.to_s }
   	}
   end
 end

@@ -4,11 +4,11 @@ class ArtistsController < ApplicationController
     render :json => { artists: Artist.all }
   end
 
-  def show_albums
+  def show
     if artist = Artist.where(:id => params[:id]).first
-      render :json => artist.albums
+      render :json => { artist: artist }
     else
       not_found
     end
-  end 
+  end
 end

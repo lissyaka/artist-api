@@ -7,4 +7,13 @@ class Album
   belongs_to :artist
   validates :name, presence: true, uniqueness: true
   validates_associated :artist
+
+  def as_json(options={})
+  	{
+  	  id: id.to_s,
+  	  name: name,
+  	  artwork_url_100: artwork_url_100,
+  	  artist_id: artist_id
+  	}
+  end
 end
