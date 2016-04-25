@@ -1,5 +1,5 @@
 class AlbumsController < ApplicationController
- 
+
   def index
     if artist = Artist.where(:id => params[:id]).first
       render :json => { albums: artist.albums }
