@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  get '/artists', to: 'artists#index'
-  get '/artists/:id', to: 'artists#show'
-  get '/artists/:id/albums', to: 'albums#index'
-  get '/albums/:id', to: 'albums#show'
+  resources :artists, only: [:index, :show]
+  resources :albums, only: [:index]
   get '*unmatched_route', to: 'application#not_found'
 end
